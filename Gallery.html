@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        body {
+            background: url(All.jpg) no-repeat;
+            margin: 0;
+        }
+
+        h1 {
+            color: white;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .box {
+    width: 23%;
+    height: 250px; /* Adjust the height as per your preference */
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+
+       .box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This property maintains the aspect ratio and covers the entire box */
+    border-radius: 10px 10px 0 0;
+}
+
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        p {
+            font-size: 18px;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ABOUT US</h1>
+    <hr>
+    <main>
+        <div class="box"><img src="g1.png"></div>
+        <div class="box"><img src="g2.png"></div>
+        <div class="box"><img src="g3.png"></div>
+        <div class="box"><img src="g4.png"></div>
+        <div class="box"><img src="g5.png"></div>
+        <div class="box"><img src="1.jpg"></div>
+        <div class="box"><img src="2.jpg"></div>
+        <div class="box"><img src="g9.png"></div>
+       <div class="box"><img src="8.jpg"></div>
+        <div class="box"><img src="5.jpg"></div>
+        <div class="box"><img src="10.jpg"></div>
+        <div class="box"><img src="7.jpg"></div>
+    </main>
+    <p>At [Sevadeep Ngo], we believe that everyone deserves the chance to live a healthy and fulfilling life. Our mission is to improve the lives of people in need by providing access to basic necessities such as food, shelter, education, and healthcare. We work tirelessly to identify the most pressing needs in our community and develop programs and initiatives to address those needs. Through our fundraising efforts and the generous support of our donors, we are able to make a positive impact on the lives of thousands of people every year. Whether it's providing a warm meal to someone in need or helping a child receive an education, we are dedicated to making a difference in our community and beyond.</p>
+</body>
+</html>

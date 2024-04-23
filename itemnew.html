@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url('All.jpg');
+            background-size: cover;
+        }
+
+        .don-sec {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px 0;
+        }
+
+        .heading h2 {
+            color: white;
+             background-color: #333;
+	     padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .don-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        .don-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .don-box img {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+        .don-box:hover img {
+            transform: scale(1.1);
+        }
+
+        h3 {
+            color: #3498db;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .col-lg-4 {
+            flex: 0 0 31.333%;
+            max-width: 31.333%;
+        }
+
+button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    border: 2px solid #4CAF50;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+    border-color: #45a049; 
+    color: #fff; 
+}
+
+
+
+    </style>
+</head>
+<body>
+    <section class="don-sec" id="donation">
+        <div class="container">
+            <div class="heading">
+                <h2>We Manage Wastage or Donation like..</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="cloth.jpg" alt="img">
+                        <h3>Clothes And Footwears</h3>
+                        <p>All Items in the Clothes and Footwears</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="babycare.jpg" alt="img">
+                        <h3>Baby Care</h3>
+                        <p>Cerelac, Milk Powder, Baby Diaper, Kids Toys, etc</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="cleaning.jpg" alt="img">
+                        <h3>Cleaning & Hygiene</h3>
+                        <p>Soaps, Detergent, sanitary pads, etc.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="essential.jpg" alt="img">
+                        <h3>Essential Staples Kg</h3>
+                        <p>Rice, Aata, Maida, Dal, Oil, etc.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="stationary.jpg" alt="img">
+                        <h3>Stationary</h3>
+                        <p>Pen, Pencils, Books, WritingPad, Compass Box, etc</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="don-box">
+                        <img src="food.jpg" alt="img">
+                        <h3>Packaged Goods</h3>
+                        <p>Biscuits, Jam, Snacks, Milk, foods, etc.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4ckebtzJ_2kroE2tndOsYNjhAQTihhHNM9rO6KafYfDsF9w/viewform"><button>Donate Now</button></a>
+    </section>
+</body>
+</html>

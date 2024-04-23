@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Location Map</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+ background-color:lightgray;
+    background-size:cover;
+}
+
+h1 {
+  margin: 45px 0 40px 0;
+  text-align: center;
+color:white;
+ background-color:blue;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px auto;
+  width: 550px; /* Adjust the size as needed */
+  height: 550px; /* Set the same size for a square */
+}
+
+.map {
+  border: 2px solid blue;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.proceed-button {
+  margin-top: 10px;
+  align-self: flex-end;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+font-size: 120%;
+}
+</style>
+</head>
+<body>
+<h1>FIND OUR NGO LOCATION</h1>
+<div class="map-container">
+  <div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.402103517627!2d73.85017439999996!3d18.4654367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2ebb94003a895%3A0x9e11e78ed3cd1274!2sDhankawadi%20Last%20Bus%20Stop!5e0!3m2!1sen!2sin!4v1708537655174!5m2!1sen!2sin" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <a href="itemnew.html"><button class="proceed-button" onclick="proceed()">Proceed</button></a>
+</div>
+<script>
+  function proceed() {
+    alert("Proceed button clicked!");
+  }
+</script>
+</body>
+</html>
