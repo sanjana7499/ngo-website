@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Clone the repository from GitHub
-                git url: 'https://github.com/sachirau/ngo-website.git', branch: 'main'
+                git url: 'https://github.com/sachirau/ngo-website.git'
             }
         }
 
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 // Build Docker image using Dockerfile in the repository
                 script {
-                    docker.build('Sachin:latest', '-f Dockerfile .')
+                    docker build -t Sachin:latest
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 // Run Docker container mapping port 80 to a random port
                 script {
-                    docker.image('Sachin:latest').run('-p 80:80')
+                    docker run -itd -p 80:80 Sachin
                 }
             }
         }
