@@ -5,7 +5,10 @@ pipeline {
         stage('Build') {
             steps {
                 // Clone the repository from GitHub
-                git url: 'https://github.com/sachirau/ngo-website.git'
+                git url: 'https://github.com/sachirau/ngo-website.git', 
+                    branch: 'main',
+                    changelog: false,
+                    poll: false
             }
         }
 
