@@ -12,20 +12,11 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                // Build Docker image using Dockerfile in the repository
-                script {
-                    docker build -t Sachin:latest
-                }
-            }
-        }
-
         stage('Run Docker Container') {
             steps {
-                // Run Docker container mapping port 80 to a random port
+                // Run Docker container using nginx:latest image, mapping port 80 to 80
                 script {
-                    docker run -itd -p 80:80 Sachin
+                    docker.image('nginx:latest').run('-p 80:80')
                 }
             }
         }
