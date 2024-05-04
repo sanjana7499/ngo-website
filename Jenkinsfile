@@ -8,7 +8,6 @@ pipeline {
                           branches: [[name: '*/main']], 
                           doGenerateSubmoduleConfigurations: false, 
                           extensions: [], 
-                          submoduleCfg: [], 
                           userRemoteConfigs: [[credentialsId: 'GitHub', url: 'https://github.com/sachirau/ngo-website.git']]])
                 echo 'fetch successful'
             }
