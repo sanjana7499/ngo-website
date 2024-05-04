@@ -2,22 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('code fetch') {
             steps {
-                // Clone the repository from GitHub
-                git url: 'https://github.com/sachirau/ngo-website.git', 
-                    branch: 'main',
-                    changelog: false,
-                    poll: false
+                checkout scmGit(branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHub', url: 'https://github.com/sachirau/ngo-website.git']])
+                echo 'fetch successfull'
             }
         }
-
-        stage('Run Docker Container') {
+        stage('build') {
             steps {
-                // Run Docker container using nginx:latest image, mapping port 80 to 80
-                script {
-                    docker.image('nginx:latest').run('-p 80:80')
-                }
+                echo 'build succesfull'
             }
         }
     }
