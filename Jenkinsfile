@@ -4,11 +4,7 @@ pipeline {
     stages {
         stage('code fetch') {
             steps {
-                checkout([$class: 'GitSCM', 
-                          branches: [[name: '*/main']], 
-                          doGenerateSubmoduleConfigurations: false, 
-                          extensions: [], 
-                          userRemoteConfigs: [[credentialsId: 'GitHub', url: 'https://github.com/sachirau/ngo-website.git']]])
+                checkout changelog: false, poll: false, scm: scmGit(branches: [[name: '**']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHub', url: 'https://github.com/sachirau/ngo-website.git']])
                 echo 'fetch successful'
             }
         }
