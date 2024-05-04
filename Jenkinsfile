@@ -5,7 +5,7 @@ pipeline {
         stage('code fetch') {
             steps {
                 checkout([$class: 'GitSCM', 
-                          branches: [[name: '**']], 
+                          branches: [[name: '*/main']], 
                           doGenerateSubmoduleConfigurations: false, 
                           extensions: [], 
                           submoduleCfg: [], 
