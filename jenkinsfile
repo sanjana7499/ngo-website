@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = 'my-web-app'
+        CONTAINER_NAME = 'web-app-container'
+    }
+
+    stages {
+        stage('GitHub Integration') {
+            steps {
+                echo 'Cloning GitHub repository...'
+                git branch: 'main', url: 'https://github.com/sanjana7499/ngo-website.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                script {
+                    sh "docker build -t ${IMAGE_NAME}:latest ."
+                }
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                echo 'Running Docker container...'
+                script {
+                    sh "docker stop ${CONTAINER_NAME} || true"
+                    sh "docker rm ${CONTAINER_NAME} || true"
+                    sh "docker run -d -p 8081:80 --name ${CONTAINER_NAME} ${IMAGE_NAME}:latest"
+                }
+            }
+        }
+
+        stage('Deploy Website') {
+            steps {
+                echo 'Website deployed at: http://15.206.212.133:8081'
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Pipeline failed. Please check logs.'
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+    }
+}
