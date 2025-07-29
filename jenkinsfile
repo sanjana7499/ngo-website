@@ -22,29 +22,29 @@ pipeline {
                     execCommand: '''set -x
 cd /opt
 
-echo "🔧 Building Docker image..."
+echo "Building Docker image..."
 docker build -t $JOB_NAME:v1.$BUILD_ID .
 
-echo "📦 Tagging Docker image..."
+echo "Tagging Docker image..."
 docker tag $JOB_NAME:v1.$BUILD_ID sanjana1001/$JOB_NAME:v1.$BUILD_ID
 docker tag $JOB_NAME:v1.$BUILD_ID sanjana1001/$JOB_NAME:latest
 
-echo "☁️ Pushing Docker image to DockerHub..."
+echo "Pushing Docker image to DockerHub..."
 docker push sanjana1001/$JOB_NAME:v1.$BUILD_ID
 docker push sanjana1001/$JOB_NAME:latest
 
-echo "🧹 Cleaning up local Docker images..."
+echo "Cleaning up local Docker images..."
 docker rmi $JOB_NAME:v1.$BUILD_ID
 docker rmi sanjana1001/$JOB_NAME:v1.$BUILD_ID
 docker rmi sanjana1001/$JOB_NAME:latest
 
-echo "✅ Docker build & push complete"
+echo "Docker build & push complete"
 ''', 
                     execTimeout: 120000,
                     cleanRemote: false,
                     sourceFiles: ''
                 )])])
-                echo '✅ Docker image build and pushed'
+                echo 'Docker image build and pushed'
             }
         }
         stage('deploy') {
