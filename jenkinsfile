@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('github Integration') {
+            steps {
+                git branch: 'main', url: 'https://github.com/sanjana7499/ngo-website.git'
+                echo 'github integration successfully done'
+            }
+        }
+        stage('Build') {
+            steps {
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'jenkins', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''rsync -avh "/var/lib/jenkins/workspace/max/" root@172.31.1.41:/opt
+''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                echo 'Build successfully done'
+            }
+        }
+        stage('Docker Build & Push') {
+            steps {
+                echo '==== Docker Build & Push ===='
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible', transfers: [sshTransfer(
+                    execCommand: '''set -x
+cd /opt
+
+echo "🔧 Building Docker image..."
+docker build -t $JOB_NAME:v1.$BUILD_ID .
+
+echo "📦 Tagging Docker image..."
+docker tag $JOB_NAME:v1.$BUILD_ID sanjana1001/$JOB_NAME:v1.$BUILD_ID
+docker tag $JOB_NAME:v1.$BUILD_ID sanjana1001/$JOB_NAME:latest
+
+echo "☁️ Pushing Docker image to DockerHub..."
+docker push sanjana1001/$JOB_NAME:v1.$BUILD_ID
+docker push sanjana1001/$JOB_NAME:latest
+
+echo "🧹 Cleaning up local Docker images..."
+docker rmi $JOB_NAME:v1.$BUILD_ID
+docker rmi sanjana1001/$JOB_NAME:v1.$BUILD_ID
+docker rmi sanjana1001/$JOB_NAME:latest
+
+echo "✅ Docker build & push complete"
+''', 
+                    execTimeout: 120000,
+                    cleanRemote: false,
+                    sourceFiles: ''
+                )])])
+                echo '✅ Docker image build and pushed'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''ansible-playbook /sourcecode/docker.yml
+''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                echo 'deploy website successfully'
+            }
+        }
+    }
+}
+
